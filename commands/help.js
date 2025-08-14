@@ -1,18 +1,15 @@
 module.exports = {
   code: `
   $addContainer[
-    $addSection[
         $addTextDisplay[
-            \`/help\` - this command
+\`/help\` - this command
+\`/ban\` - ban command
+\`/kick\` - kick command
+\`/mute\` - mute command
 
-            \`/ban\` - ban command
-            \`/kick\` - kick command
-            \`/mute\` - mute command
-
-            \`/user\` - user info
-            \`/server\` - server info
+\`/user\` - user info
+\`/server\` - server info
         ]
-    ]
   ]
 
   `,

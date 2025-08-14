@@ -10,6 +10,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@tryforge/forgescript": "github:tryforge/ForgeScript#dev"
+    "@tryforge/forge.db": "^2.1.0",
+    "@tryforge/forgescript": "github:tryforge/ForgeScript#dev",
+    "sqlite3": "^5.1.7"
   }
 }

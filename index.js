@@ -1,4 +1,5 @@
 const { ForgeClient } = require("@tryforge/forgescript")
+const { ForgeDB } = require("@tryforge/forge.db")
 
 const client = new ForgeClient({
     intents: [
@@ -13,8 +14,25 @@ const client = new ForgeClient({
     prefixes: [
         "!",
         "?"
-    ] // The prefixes to use for our bot!
+    ],// The prefixes to use for our bot!
+    extensions: [
+    new ForgeDB()
+    ]
 })
 
+ForgeDB.variables({
+user_xp:"0"
+})
+
+
+client.commands.add(
+module.exports = {
+    name: "",
+    type: "messageCreate",
+    code: `
+    $setMemberVar[user_xp;$sum[$getMemberVar[user_xp;$authorId;$guildId];5];$authorId;$guildId]
+ 
+    `
+})
 client.login("")
 client.applicationCommands.load("./commands");

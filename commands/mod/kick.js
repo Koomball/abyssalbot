@@ -1,7 +1,16 @@
 module.exports = {
     independent: true,
   code: `
-  $if[$hasPerms[$guildId;$authorId;KickMembers];Kicked, $option[user]!]
+  $if[$hasPerms[$guildId;$authorId;KickMembers];
+      $!kickMember[$guildId;$option[user];$option[reason]]
+      $addContainer[
+            $addTextDisplay[**User Kicked**]
+            $addTextDisplay[*User $username[$option[user]]*]
+            $addSeparator[Large;true]
+            $addTextDisplay[**Reason**]
+            $addTextDisplay[*$option[reason]*]
+    ]
+  ]
     `,
   data: {
     name: "kick",
