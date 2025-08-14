@@ -21,7 +21,15 @@ const client = new ForgeClient({
 })
 
 ForgeDB.variables({
-user_xp:"0"
+user_xp:"0",
+user_lvl:"0",
+user_xp_tolvl:"100",
+
+bones:"0",
+bones_bank:"0",
+
+item_paint:"0",
+booster:false,
 })
 
 
@@ -35,4 +43,5 @@ module.exports = {
     `
 })
 client.login("")
+
 client.applicationCommands.load("./commands");
