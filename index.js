@@ -43,5 +43,4 @@ module.exports = {
     `
 })
 client.login("")
-
 client.applicationCommands.load("./commands");
