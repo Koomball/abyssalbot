@@ -10,6 +10,6 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@tryforge/forgescript": "github:tryforge/ForgeScript#main"
+    "@tryforge/forgescript": "github:tryforge/ForgeScript#dev"
   }
 }

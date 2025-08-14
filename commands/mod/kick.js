@@ -1,7 +1,8 @@
 module.exports = {
+    independent: true,
   code: `
-    Kicked, $option[user]!
-  `,
+  $if[$hasPerms[$guildId;$authorId;KickMembers];Kicked, $option[user]!]
+    `,
   data: {
     name: "kick",
     description: "Kick a user.",

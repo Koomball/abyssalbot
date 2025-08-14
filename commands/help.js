@@ -1,13 +1,19 @@
 module.exports = {
   code: `
-    \`/help\` - this command
+  $addContainer[
+    $addSection[
+        $addTextDisplay[
+            \`/help\` - this command
 
-    \`/mod ban\` - ban command
-    \`/mod kick\` - kick command
-    \`/mod mute\` - mute command
+            \`/ban\` - ban command
+            \`/kick\` - kick command
+            \`/mute\` - mute command
 
-    \`/info user\` - user info
-    \`/info server\` - server info
+            \`/user\` - user info
+            \`/server\` - server info
+        ]
+    ]
+  ]
 
   `,
   data: {
