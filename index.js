@@ -41,6 +41,11 @@ drop_active:false,
 
 streak_user:"0",
 streak_count:"0",
+
+    // Activity lb
+daily_messages:"0",
+weekly_messages:"0",
+monthly_messages:"0",
 })
 
 
@@ -83,6 +88,7 @@ module.exports = {
                 $setChannelVar[streak_count;$sum[$getChannelVar[streak_count];1]]
             ]
             $let[bones;$round[$math[$randomNumber[5;8]*($getChannelVar[streak_count]/3)]]]
+            $if[$get[bones]<5;$let[bones;5]]
             $setMemberVar[bones;$math[$getMemberVar[bones]+$get[bones]]]
             <@$authorId> grabbed the bone and received $get[bones] bones! (Streak: $getChannelVar[streak_count]);
         ]

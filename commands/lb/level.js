@@ -2,7 +2,7 @@ module.exports = {
   code: `
     $addContainer[
             $addTextDisplay[**Level Leaderboard**]
-            $addTextDisplay[$memberLeaderboard[user_lvl;$guildId;asc;10;1;\n;]]
+            $addTextDisplay[$memberLeaderboard[user_lvl]]
     ]
   `,
   data: {
