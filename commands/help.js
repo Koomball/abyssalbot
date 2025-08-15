@@ -5,10 +5,12 @@ module.exports = {
 \`/help\` - this command
 \`/ban\` - ban command
 \`/kick\` - kick command
-\`/mute\` - mute command
 
-\`/user\` - user info
-\`/server\` - server info
+\`/scrolls\`
+\`/market\`
+\`/balance\`
+\`/activity\`
+\`/rank\`
         ]
   ]
 

@@ -75,7 +75,7 @@ module.exports = {
             $setChannelVar[drop_count;$sum[$getServerVar[drop_count];$randomNumber[28;76]]]
         ]
 
-        $if[$and[$getChannelVar[drop_active]==true;$message[0]==grab];
+        $if[$and[$getChannelVar[drop_active]==true;$message==grab];
             $setChannelVar[drop_active;false]
             $if[$getChannelVar[streak_user]!=$authorId;
                 $setChannelVar[streak_user;$authorId]

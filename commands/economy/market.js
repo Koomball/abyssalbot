@@ -25,5 +25,4 @@ module.exports = {
     name: "market",
     description: "View the market.",
   },
-
 };
