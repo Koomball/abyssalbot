@@ -64,7 +64,7 @@ module.exports = {
     ]
     ]
     
-    $if[$channelId==1395421731593916558;
+    $if[$channelId==1400177232680587304;
         $if[$getServerVar[drop_count]>=100;
             $setServerVar[drop_count;0] 
             $addContainer[
@@ -72,7 +72,7 @@ module.exports = {
             ]
             $setServerVar[drop_active;true];
             
-            $setServerVar[drop_count;$sum[$getServerVar[drop_count];$randomNumber[6;11]]]
+            $setServerVar[drop_count;$sum[$getServerVar[drop_count];$randomNumber[28;76]]]
         ]
 
         $if[$and[$getServerVar[drop_active]==true;$message[0]==grab];
@@ -81,7 +81,7 @@ module.exports = {
                 $setChannelVar[streak_count;1];
                 $setChannelVar[streak_count;$sum[$getChannelVar[streak_count];1]]
             ]
-            $let[bones;$math[$randomNumber[5;8]*$getChannelVar[streak_count]]]
+            $let[bones;$math[$round[$randomNumber[5;8]*($getChannelVar[streak_count]/3)]]]
             $setMemberVar[bones;$math[$getMemberVar[bones]+$get[bones]]]
             $setServerVar[drop_active;false]
             <@$authorId> grabbed the bone and received $get[bones] bones! (Streak: $getChannelVar[streak_count]);

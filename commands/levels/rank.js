@@ -4,8 +4,7 @@ module.exports = {
     $addContainer[
       $addSection[
         $addTextDisplay[**Level for $username[$authorId]**]
-        $addTextDisplay[Level: **$getMemberVar[user_lvl;$authorId]**]
-        $addTextDisplay[XP: **$getMemberVar[user_xp;$authorId;$guildId]/$round[$getMemberVar[user_xp_tolvl;$authorID]]**]
+        $addTextDisplay[Level: **$getMemberVar[user_lvl;$authorId]**\nXP: **$getMemberVar[user_xp;$authorId;$guildId]/$round[$getMemberVar[user_xp_tolvl;$authorID]]**\nTotal XP: **$getMemberVar[user_total_xp;$authorId]**]
         $addThumbnail[$userAvatar[$authorId]]
       ]
     $addSeparator[Large;true];
