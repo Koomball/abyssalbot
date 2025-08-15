@@ -16,7 +16,7 @@ module.exports = {
         $addSeparator[Large;true]
         $addSection[
             $addTextDisplay[**Standard Quest Scroll**]
-            $addTextDisplay[*Activate to recieve a quest of 3-7 tasks, each task offers a reward and at the final task recieve a special Scroll Lootbox.*]
+            $addTextDisplay[*Activate to recieve a quest of 3-6 tasks, each task offers a reward and at the final task recieve a special Scroll Lootbox.*]
             $addButton[Buy3;Buy (500 Bones);Primary]
         ]
     ]
@@ -25,4 +25,5 @@ module.exports = {
     name: "market",
     description: "View the market.",
   },
+
 };
