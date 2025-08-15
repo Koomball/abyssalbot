@@ -1,5 +1,5 @@
 module.exports = {
-    independent: true,
+  independent: true,
   code: `
       $addContainer[
             $addTextDisplay[**Bone Balance**]
