@@ -65,29 +65,30 @@ module.exports = {
     ]
     
     $if[$channelId==1400177232680587304;
-        $if[$getServerVar[drop_count]>=100;
-            $setServerVar[drop_count;0] 
+        $if[$getChannelVar[drop_count]>=100;
+            $setChannelVar[drop_count;0] 
             $addContainer[
                 $addTextDisplay[Be the first to say \`grab\` to obtain a bone!]
             ]
-            $setServerVar[drop_active;true];
+            $setChannelVar[drop_active;true];
             
-            $setServerVar[drop_count;$sum[$getServerVar[drop_count];$randomNumber[28;76]]]
+            $setChannelVar[drop_count;$sum[$getServerVar[drop_count];$randomNumber[28;76]]]
         ]
 
-        $if[$and[$getServerVar[drop_active]==true;$message[0]==grab];
+        $if[$and[$getChannelVar[drop_active]==true;$message[0]==grab];
+            $setChannelVar[drop_active;false]
             $if[$getChannelVar[streak_user]!=$authorId;
                 $setChannelVar[streak_user;$authorId]
                 $setChannelVar[streak_count;1];
                 $setChannelVar[streak_count;$sum[$getChannelVar[streak_count];1]]
             ]
-            $let[bones;$math[$round[$randomNumber[5;8]*($getChannelVar[streak_count]/3)]]]
+            $let[bones;$round[$math[$randomNumber[5;8]*($getChannelVar[streak_count]/3)]]]
             $setMemberVar[bones;$math[$getMemberVar[bones]+$get[bones]]]
-            $setServerVar[drop_active;false]
             <@$authorId> grabbed the bone and received $get[bones] bones! (Streak: $getChannelVar[streak_count]);
-        ];
+        ]
     ]
     `
 })
 client.login("")
 client.applicationCommands.load("./commands");
+client.commands.load("./interactions");
