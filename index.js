@@ -49,8 +49,7 @@ monthly_messages:"0",
 })
 
 
-client.commands.add(
-module.exports = {
+client.commands.add({
     // Runs every message
     name: "",
     type: "messageCreate",
@@ -77,7 +76,7 @@ module.exports = {
             ]
             $setChannelVar[drop_active;true];
             
-            $setChannelVar[drop_count;$sum[$getServerVar[drop_count];$randomNumber[28;76]]]
+            $setChannelVar[drop_count;$sum[$getChannelVar[drop_count];$randomNumber[10;17]]]
         ]
 
         $if[$and[$getChannelVar[drop_active]==true;$message==grab];
@@ -87,14 +86,12 @@ module.exports = {
                 $setChannelVar[streak_count;1];
                 $setChannelVar[streak_count;$sum[$getChannelVar[streak_count];1]]
             ]
-            $let[bones;$round[$math[$randomNumber[5;8]*($getChannelVar[streak_count]/3)]]]
-            $if[$get[bones]<5;$let[bones;5]]
+            $let[bones;$round[$math[$randomNumber[5;8]*(1+($getChannelVar[streak_count]/3))]]]
             $setMemberVar[bones;$math[$getMemberVar[bones]+$get[bones]]]
             <@$authorId> grabbed the bone and received $get[bones] bones! (Streak: $getChannelVar[streak_count]);
         ]
     ]
-    `
-})
+    `})
 client.login("")
 client.applicationCommands.load("./commands");
 client.commands.load("./interactions");
