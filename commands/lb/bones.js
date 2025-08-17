@@ -1,5 +1,6 @@
 module.exports = {
   code: `
+    $fetchMembers[$guildId]
     $addContainer[
             $addTextDisplay[**Bone Leaderboard**]
             $addTextDisplay[$memberLeaderboard[bones]]

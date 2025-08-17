@@ -3,6 +3,7 @@ const { ForgeDB } = require("@tryforge/forge.db")
 
 const client = new ForgeClient({
     intents: [
+        "GuildMembers",
         "GuildMessages",
         "Guilds",
         "MessageContent" // This intent is privileged, must be whitelisted in dev portal, in your application.
@@ -43,9 +44,10 @@ streak_user:"0",
 streak_count:"0",
 
     // Activity lb
-daily_messages:"0",
+messages:"0",
 weekly_messages:"0",
 monthly_messages:"0",
+activity_timestamps:"1755440626700|1755440626700|1755440626700",
 })
 
 
@@ -54,6 +56,30 @@ client.commands.add({
     name: "",
     type: "messageCreate",
     code: `
+    $arrayLoad[timestamps;|;$getServerVar[activity_timestamps]]
+        $if[$getTimestamp>=$sum[$arrayAt[timestamps;0];86400000];
+            $c[if a day has passed]
+            $!arraySplice[timestamps;0;1;$getTimestamp]
+            $setServerVar[activity_timestamps;$arrayJoin[timestamps;|]]
+            $deleteRecords[messages]
+        ;
+            $c[if a day has not passed]
+            $setMemberVar[messages;$sum[$getMemberVar[messages];1]]
+        ]
+        $if[$getTimestamp>=$sum[$arrayAt[timestamps;1];604800000];
+            $!arraySplice[timestamps;1;1;$getTimestamp]
+            $setServerVar[activity_timestamps;$arrayJoin[timestamps;|]]
+            $deleteRecords[weekly_messages]
+        ;
+            $setMemberVar[weekly_messages;$sum[$getMemberVar[weekly_messages];1]]
+        ]
+        $if[$getTimestamp>=$sum[$arrayAt[timestamps;2];2.6280E+9];
+            $!arraySplice[timestamps;3;1;$getTimestamp]
+            $setServerVar[activity_timestamps;$arrayJoin[timestamps;|]]
+            $deleteRecords[monthly_messages]
+        ;
+            $setMemberVar[monthly_messages;$sum[$getMemberVar[monthly_messages];1]]
+        ]
     $let[xp;$randomNumber[4;10]]
     $setMemberVar[user_xp;$sum[$getMemberVar[user_xp;$authorId;$guildId];$get[xp]];$authorId;$guildId]
     $setMemberVar[user_total_xp;$sum[$getMemberVar[user_total_xp;$authorId;$guildId];$get[xp]];$authorId;$guildId]
