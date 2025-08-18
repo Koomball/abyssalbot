@@ -119,5 +119,5 @@ client.commands.add({
     ]
     `})
 client.login("")
-client.applicationCommands.load("./commands");
-client.commands.load("./interactions");
+client.applicationCommands.load("./src/commands");
+client.commands.load("./src/interactions");
